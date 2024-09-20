@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title>Form Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="container">
+    <div id="box1">
+      <h2>Fill Form</h2>
+      <form id="form123">
+        <div id="user-box" class="input-div">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Name.." />
+        </div>
+        <div id="email-box" class="input-div">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Email.." />
+        </div>
+        <div id="pass-box" class="input-div">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Password.." />
+        </div>
+        <div id="dob-box" class="input-div">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" />
+        </div>
+        <div id="agree-box">
+          <input id="terms" type="checkbox" /> I agree to terms
+        </div>
+        <button id="submit-btn" type="submit">OK</button>
+      </form>
+    </div>
+
+    <div id="box2">
+      <h2>User Data</h2>
+      <table id="entries">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Dob</th>
+          <th>Accepted terms?</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
