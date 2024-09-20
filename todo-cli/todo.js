@@ -1,35 +1,31 @@
 const todoList = () => {
-    let all = [];
-  
+    all = [];
     const add = (todoItem) => {
       all.push(todoItem);
     };
-  
     const markAsComplete = (index) => {
-      if (index >= 0 && index < all.length) {
-        all[index].completed = true;
-      }
+      all[index].completed = true;
     };
   
     const overdue = () => {
-      return all.filter((item) => item.dueDate < today && !item.completed);
+      return all.filter((todo) => todo.dueDate < today);
     };
   
     const dueToday = () => {
-      return all.filter((item) => item.dueDate === today);
+      return all.filter((todo) => todo.dueDate == today);
     };
   
     const dueLater = () => {
-      return all.filter((item) => item.dueDate > today);
+      return all.filter((todo) => todo.dueDate > today);
     };
   
     const toDisplayableList = (list) => {
       return list
-        .map((item) => {
-          let checkbox = item.completed ? "[x]" : "[ ]";
-          let displayDate = item.dueDate === today ? "" : item.dueDate;
-          return `${checkbox} ${item.title} ${displayDate}`.trim();
-        })
+        .map(
+          (todo) =>
+            `${todo.completed ? "[x]" : "[ ]"} ${todo.title} ${todo.dueDate == today ? "" : todo.dueDate
+            }`
+        )
         .join("\n");
     };
   
@@ -54,10 +50,10 @@ const todoList = () => {
     return d.toISOString().split("T")[0];
   };
   
-  let date = new Date();
-  const today = formattedDate(date);
-  const yesterday = formattedDate(new Date(date.setDate(date.getDate() - 1)));
-  const tomorrow = formattedDate(new Date(date.setDate(date.getDate() + 2)));
+  var d = new Date();
+  const today = formattedDate(d);
+  const yesterday = formattedDate(new Date(d.setDate(d.getDate() - 1)));
+  const tomorrow = formattedDate(new Date(d.setDate(d.getDate() + 2)));
   
   todos.add({ title: "Submit assignment", dueDate: yesterday, completed: false });
   todos.add({ title: "Pay rent", dueDate: today, completed: true });
@@ -65,16 +61,22 @@ const todoList = () => {
   todos.add({ title: "File taxes", dueDate: tomorrow, completed: false });
   todos.add({ title: "Pay electric bill", dueDate: tomorrow, completed: false });
   
-  console.log("My Todo-list\n");
+  console.log("My Todo-list\n\n");
   
   console.log("Overdue");
-  let overdueItems = todos.overdue();
-  console.log(todos.toDisplayableList(overdueItems));
+  var overdues = todos.overdue();
+  var formattedOverdues = todos.toDisplayableList(overdues);
+  console.log(formattedOverdues);
+  console.log("\n\n");
   
-  console.log("\nDue Today");
-  let todayItems = todos.dueToday();
-  console.log(todos.toDisplayableList(todayItems));
+  console.log("Due Today");
+  let itemsDueToday = todos.dueToday();
+  let formattedItemsDueToday = todos.toDisplayableList(itemsDueToday);
+  console.log(formattedItemsDueToday);
+  console.log("\n\n");
   
-  console.log("\nDue Later");
-  let laterItems = todos.dueLater();
-  console.log(todos.toDisplayableList(laterItems));
+  console.log("Due Later");
+  let itemsDueLater = todos.dueLater();
+  let formattedItemsDueLater = todos.toDisplayableList(itemsDueLater);
+  console.log(formattedItemsDueLater);
+  console.log("\n\n");
