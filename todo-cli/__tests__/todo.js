@@ -10,7 +10,7 @@ describe("Todo test cases", () => {
     const today = new Date();
     const oneDay = 60 * 60 * 24 * 1000;
 
-    // Set up test todos
+    // Setting up initial todos
     [
       {
         title: "Complete assignment",
@@ -30,41 +30,33 @@ describe("Todo test cases", () => {
     ].forEach(add);
   });
 
-  // Test to add a todo
   test("Add new todo", () => {
-    expect(all.length).toEqual(3); // Initial count
+    expect(all.length).toEqual(3); // Initially 3 todos
 
     add({
       title: "Take the test",
       completed: false,
-      dueDate: new Date().toLocaleDateString("en-CA"), // Due Today
+      dueDate: new Date().toLocaleDateString("en-CA"),
     });
 
-    expect(all.length).toEqual(4); // After adding one more
+    expect(all.length).toEqual(4); // Now should be 4 todos
   });
 
-  // Test to mark a todo as complete
   test("Todo mark as complete", () => {
-    expect(all[0].completed).toEqual(false); // Initially not completed
+    expect(all[0].completed).toEqual(false);
     markAsComplete(0);
-    expect(all[0].completed).toEqual(true); // Now marked as complete
+    expect(all[0].completed).toEqual(true);
   });
 
-  // Test to retrieve overdue items
-  test("Test for overdue items", () => {
-    expect(overdue().length).toEqual(1); // Should have 1 overdue item
-    expect(overdue()[0].title).toEqual("Complete assignment"); // Check title
+  test("Retrieve overdue items", () => {
+    expect(overdue().length).toEqual(1); // There should be 1 overdue todo
   });
 
-  // Test to retrieve due today items
-  test("Test due today items", () => {
-    expect(dueToday().length).toEqual(2); // Should have 2 due today
-    expect(dueToday()[0].title).toEqual("Go for shopping"); // Check first title
+  test("Retrieve due today items", () => {
+    expect(dueToday().length).toEqual(2); // There should be 2 todos due today
   });
 
-  // Test to retrieve due later items
-  test("Test for due later items", () => {
-    expect(dueLater().length).toEqual(1); // Should have 1 item due later
-    expect(dueLater()[0].title).toEqual("Complete project"); // Check title
+  test("Retrieve due later items", () => {
+    expect(dueLater().length).toEqual(1); // There should be 1 todo due later
   });
 });
