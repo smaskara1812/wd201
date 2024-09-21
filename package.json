@@ -1,6 +1,23 @@
 {
+  "name": "wd201",
+  "version": "1.0.0",
+  "description": "",
+  "main": "todo.js",
+  "scripts": {
+    "test": "jest",
+    "prepare": "husky install"
+  },
+  "author": "sohammaskara",
+  "license": "ISC",
   "devDependencies": {
-    "husky": "^9.1.6",
-    "jest": "^29.7.0"
+    "husky": "^8.0.3",
+    "jest": "^29.0.3",
+    "lint-staged": "^12.5.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write"
+    ]
   }
 }
