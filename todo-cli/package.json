@@ -1,17 +1,32 @@
 {
   "name": "todo-cli",
   "version": "1.0.0",
+  "description": "A simple CLI-based todo list application",
   "main": "todo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",               
+    "lint": "eslint .",           
+    "prettier": "prettier --write ." 
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "lint-staged": {
     "*.js": [
       "eslint",
       "prettier --write ."
     ]
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",            
+    "eslint": "^8.0.0",          
+    "eslint-plugin-react": "^7.0.0", 
+    "prettier": "^3.0.0",        
+    "@eslint/js": "^8.0.0",      
+    "husky": "^8.0.0"            
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged" 
+    }
   }
 }
