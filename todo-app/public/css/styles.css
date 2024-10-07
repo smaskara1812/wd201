@@ -1,4 +1,12 @@
-body{
-    background-color: lightgrey;
-    font-family: 'Courier New', Courier, monospace;
+body {
+    font-family: sans-serif;
+    background: white;
+}
+
+.Todo-Item .trash-icon {
+    display: none; /* Initially hide the delete button */
+}
+
+.Todo-Item:hover .trash-icon {
+    display: inline-block; /* Show the delete button on hover */
 }
